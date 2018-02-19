@@ -1,0 +1,3 @@
+<p><%=answer.text%></p>
+<p><%=answer.user.email%></p>
+<p><%=link_to "ВИдалити", question_answer_path(answer.question.id,answer.id), method: :delete%></p>

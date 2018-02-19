@@ -1,0 +1,11 @@
+<p>Назва: <%= @question.name %></p>
+<p>Зміст: <%= @question.text %></p>
+<p>Кількість відповідей: <%= @question.count %></p>
+<p>Категорія: <%= @question.category.name %></p>
+<hr>
+<% @answers.each do |answer| %>
+<%=render '/answers/elem', answer:answer%>
+<%end%>
+<%=form_for :answer, url:question_answers_path(@question.id) do |f|%>
+<%=render '/answers/form', f:f %>
+<%end%>

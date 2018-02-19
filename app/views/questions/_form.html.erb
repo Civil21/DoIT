@@ -1,0 +1,9 @@
+<p><%= f.label :category %></p>
+<%= f.select 'category_id', options_from_collection_for_select(Category.all, 'id', 'name')%>
+
+<p> <%= f.label "Назва" %></p>
+<%= f.text_field :name %><br />
+
+<p><%= f.label "Текст"%></p>
+<%= pp f.text_area :text %>
+<p><%= f.submit "Зберегти"%></p>

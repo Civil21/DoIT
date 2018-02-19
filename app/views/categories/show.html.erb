@@ -1,0 +1,4 @@
+<h1><%=@category.name%></h1>
+<% @questions.each do |question|%>
+<%=render '/questions/elem', question:question%>
+<%end%>
