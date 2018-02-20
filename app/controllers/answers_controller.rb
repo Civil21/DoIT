@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_answer, only:[:update,:destroy]
+	before_action :set_answer, only:[:update,:destroy,:positiv_vote,:negativ_vote]
 
 	def create
 		params[:answer][:user_id]=current_user.id
@@ -25,6 +25,32 @@ class AnswersController < ApplicationController
 		@question.update(count: @question.count-1)
 		@answer.destroy
 		redirect_to question_path(params[:question_id])
+	end
+
+	def positiv_vote
+		@vote=AnswerVote.where(user_id: current_user.id,answer_id: @answer.id).first
+		if @vote==nil
+		    @vote=AnswerVote.create(user_id: current_user.id, answer_id: @answer.id, score: 1)
+	    else
+	    	if @vote.score == -1
+	    	    @vote.update(score: 1)
+	        end
+	    end
+	    @answer.update(scores: AnswerVote.where(answer: @answer.id).sum(:score))
+	    redirect_to question_path(@answer.question.id)
+	end
+
+	def negativ_vote
+		@vote=AnswerVote.where(user_id: current_user.id,answer_id: @answer.id).first
+		if @vote==nil
+		    @vote=AnswerVote.create(user_id: current_user.id, answer_id: @answer.id, score: -1)
+	    else
+	    	if @vote.score == 1
+	    	    @vote.update(score:-1)
+	        end
+	    end
+	    @answer.update(scores: AnswerVote.where(answer: @answer.id).sum(:score))
+	    redirect_to question_path(@answer.question.id)
 	end
 
 	private

@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def show
-		@answers=Answer.where(question_id: @question.id)
+		@answers=Answer.where(question_id: @question.id).order(scores: :DESC)
 	end
 
 	def new
