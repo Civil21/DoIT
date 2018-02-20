@@ -1,3 +1,4 @@
+<%= image_tag @question.user.avatar.url(:thumb), width: 30, heigth: 30 %>
 <h1><%=link_to "All questions",questions_path%></h1>
 <h1><%=link_to "All categories",categories_path%></h1>
 <%if user_signed_in?%>
