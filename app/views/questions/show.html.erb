@@ -1,11 +1,31 @@
-<p>Назва: <%= @question.name %></p>
+<p>Назва: <%= @question.name %> <%if @chosen != nil%><%=link_to "Добавити в закладки", chosen_question_path(@question.id)%><%else%><%=link_to "Видалити із закладок", chosen_question_path(@question.id)%><%end%></p>
 <p>Зміст: <%= @question.text %></p>
 <p>Кількість відповідей: <%= @question.count %></p>
 <p>Категорія: <%= @question.category.name %></p>
 <hr>
+<table>
+<tr>
+<td>
+Відповідь
+</td>
+<td>
+Хто
+</td>
+<td>
+Оцінка
+</td>
+<td>
+Дії
+</td>
+</tr>
 <% @answers.each do |answer| %>
+<tr>
 <%=render '/answers/elem', answer:answer%>
+</tr>
 <%end%>
+</table>
+<div align="center">
 <%=form_for :answer, url:question_answers_path(@question.id) do |f|%>
 <%=render '/answers/form', f:f %>
 <%end%>
+</div>

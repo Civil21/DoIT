@@ -8,6 +8,9 @@ class QuestionsController < ApplicationController
 
 	def show
 		@answers=Answer.where(question_id: @question.id).order(scores: :DESC)
+		if current_user != nil
+			@chosen=ChosenQuestion.where(user_id: current_user.id, question_id: @question.id).first
+		end
 	end
 
 	def new

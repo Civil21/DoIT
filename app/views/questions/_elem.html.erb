@@ -1,5 +1,5 @@
-<p>Назва: <%=link_to question.name, question_path(question.id) %></p>
+<td>Назва: <%=link_to question.name, question_path(question.id) %></td>
 
-<p>Зміст: <%= question.text %></p>
-<p>Кількість відповідей: <%= question.count %></p>
-<p>Категорія: <%= question.category.name %></p>
+<td>Зміст: <%= question.text %></td>
+<td>Кількість відповідей: <%= question.count %></td>
+<td>Категорія: <%= question.category.name %></td>
