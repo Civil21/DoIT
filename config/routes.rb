@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :categories, only:[:index,:show]
 
   resources :questions do 
+  	member do 
+  		get :chosen
+  	end
   	resources :answers, only:[:create,:update,:destroy] 
 
   end
