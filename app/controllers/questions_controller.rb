@@ -18,6 +18,8 @@ class QuestionsController < ApplicationController
 		params[:question][:user_id]=current_user.id
 		@question=Question.create(question_params)
 		if @question.save
+			chosen
+			@notification=Notification.create(user_id: current_user.id, text: "Ваше питання успішно додано Тут повинно бути посилання")
 			@category=Category.find(@question.category.id)
 			@category.update(count: @category.count+1)
 			redirect_to question_path(@question.id)
@@ -45,7 +47,7 @@ class QuestionsController < ApplicationController
 	def chosen
 		@chosen=ChosenQuestion.where(question_id: @question.id).first
 		if @chosen == nil
-			@chosen.create(user_id: current_user.id,question_id: @question.id)
+			@chosen=ChosenQuestion.create(user_id: current_user.id,question_id: @question.id)
 		else
 		    @chosen.delete
 		end

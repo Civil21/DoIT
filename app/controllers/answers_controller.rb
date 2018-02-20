@@ -9,6 +9,12 @@ class AnswersController < ApplicationController
 		if @answer.save
 			@question=Question.find(@answer.question.id)
 			@question.update(count: @question.count+1)
+
+			@chosens=ChosenQuestion.where(question_id: @question.id)
+			@chosens.each do |chosen|
+				@notification=Notification.create(user_id: chosen.user.id, text: "На питання '"+@question.name+"' була додана нова відповідь")
+			end
+
 			redirect_to question_path(@answer.question.id)
 		else
 
@@ -17,6 +23,12 @@ class AnswersController < ApplicationController
 
 	def update
 		@answer.update(answer_params)
+
+		@chosens=ChosenQuestion.where(question_id: @question.id)
+		@chosens.each do |chosen|
+			@notification=Notification.create(user_id: chosen.user.id, text: "Відповідь до питання '"+@question.name+"' була відредагована")
+		end
+
 		redirect_to question_path(@answer.question.id)
 	end
 
