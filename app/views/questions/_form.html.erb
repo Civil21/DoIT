@@ -5,5 +5,7 @@
 <%= f.text_field :name %><br />
 
 <p><%= f.label "Текст"%></p>
-<%= pp f.text_area :text %>
+<%= f.text_area :text, :class => "tinymce", :rows => 40, :cols => 120 %>
+<%= tinymce %>
+
 <p><%= f.submit "Зберегти"%></p>

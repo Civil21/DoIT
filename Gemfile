@@ -34,6 +34,8 @@ gem 'activeadmin'
 
 gem 'devise'
 
+gem 'tinymce-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
