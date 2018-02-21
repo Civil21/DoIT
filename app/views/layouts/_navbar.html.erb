@@ -1,0 +1,12 @@
+<ul>
+  	<li><%=link_to 'Головна',root_path , class:"active" %></li>
+  	<li><%=link_to 'Категорії',categories_path%></li>
+    <li><%=link_to "Усі питання",questions_path%></li>
+    <li style="float:right">
+    	<%if user_signed_in?%>
+        	<p><%=link_to "Вихід",destroy_user_session_path, method: :delete%></p>
+    	<%else%>
+            <p><%=link_to "Вхід",new_user_session_path%></p>
+        <%end%>
+    </li>
+</ul>
