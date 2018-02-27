@@ -1,12 +1,31 @@
-<ul>
-  	<li><%=link_to 'Головна',root_path , class:"active" %></li>
-  	<li><%=link_to 'Категорії',categories_path%></li>
-    <li><%=link_to "Усі питання",questions_path%></li>
-    <li style="float:right">
-    	<%if user_signed_in?%>
-        	<p><%=link_to "Вихід",destroy_user_session_path, method: :delete%></p>
-    	<%else%>
-            <p><%=link_to "Вхід",new_user_session_path%></p>
-        <%end%>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+      <a class="navbar-brand" href="/">DoIT</a>
+    <li class="nav-item">
+      <a class="nav-link" href="/categories">Категорії</a>
     </li>
-</ul>
+    <li class="nav-item">
+      <a class="nav-link" href="/questions">Усі питання</a>
+    </li>
+        </ul>
+    </div>
+
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+         <%if user_signed_in?%>
+        <span class="navbar-text">
+            <%= current_user.nickname %>
+        </span>
+        <li class="nav-item">
+             <a class="nav-link" href="/users/sign_out">Вихід</a>
+        </li>
+    <%else%>
+        <li class="nav-item">
+             <a class="nav-link" href="/users/sign_in">Вхід</a>
+        </li>   
+    <%end%>   
+        </ul>
+    </div>
+</nav>

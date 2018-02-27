@@ -1,4 +1,21 @@
-<td>Назва: <%=link_to question.name, question_path(question.id) %></td>
-<td>Автор: <%=image_tag question.user.avatar.url, width:60,height:60%><%=question.user.nickname%>(<%=question.user.email%>)</td>
-<td>Кількість відповідей: <%= question.count %></td>
-<td>Категорія: <%= question.category.name %></td>
+<style type="text/css">
+	.badge a{
+		color: white;
+	}
+</style>
+<div>
+	<h5>
+		<%=link_to question.name, question_path(question.id) %>
+		<span class="badge badge-primary" data-toggle="tooltip" title="Answers count"><%= question.count %></span>
+		<h6>
+			
+		</h6>
+	</h5>
+	<h6><span class="fa fa-user"></span> <%=question.user.nickname%></h6>
+	<p>
+		<%=strip_tags(question.text)[0..255]%>...
+		<br>
+		<p class="font-weight-bold badge badge-secondary"><%=link_to question.category.name, category_path(question.category.id) %></p>
+	</p>
+	<hr>
+</div>

@@ -1,3 +1,4 @@
+<div style="all: initial">
 <p><%= f.label :category %></p>
 <%= f.select 'category_id', options_from_collection_for_select(Category.all, 'id', 'name')%>
 
@@ -9,3 +10,4 @@
 <%= tinymce %>
 
 <p><%= f.submit "Зберегти"%></p>
+</div>

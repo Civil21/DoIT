@@ -54,7 +54,7 @@ class QuestionsController < ApplicationController
 		else
 		    @chosen.delete
 		end
-		redirect_to question_path(@question)
+		
 	end
 
 	private

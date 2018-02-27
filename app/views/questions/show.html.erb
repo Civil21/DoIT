@@ -1,4 +1,4 @@
-<p>Назва: <%= @question.name %> <%if @chosen != nil%><%=link_to "Добавити в закладки", chosen_question_path(@question.id)%><%else%><%=link_to "Видалити із закладок", chosen_question_path(@question.id)%><%end%></p>
+<!--<p>Назва: <%= @question.name %> </p>
 <p>Зміст: <%= @question.text %></p>
 <p>Кількість відповідей: <%= @question.count %></p>
 <p>Категорія: <%= @question.category.name %></p>
@@ -18,3 +18,18 @@
 <%=render '/answers/form', f:f %>
 <%end%>
 </div>
+-->
+<br>
+<h3><%= @question.name %></h3>
+<hr><p class="font-weight-bold badge badge-secondary"><%=link_to @question.category.name, category_path(@question.category.id) %></p>
+<p><%= @question.text %></p>
+<hr>
+<% if @question.count? %>
+<h5>Answers:</h5>
+<% @answers.each do |answer| %>
+<%=render '/answers/elem', answer:answer%>
+<%end%>
+<%=form_for :answer, url:question_answers_path(@question.id) do |f|%>
+<%=render '/answers/form', f:f %>
+<%end%>
+<%end%>
