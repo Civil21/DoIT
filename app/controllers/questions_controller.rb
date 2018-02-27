@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
 		@question=Question.create(question_params)
 		if @question.save
 			chosen
-			@notification=Notification.create(user_id: current_user.id, text: "Ваше питання успішно додано Тут повинно бути посилання")
+			@notification=Notification.create(user_id: current_user.id, text: "Ваше питання успішно додано", url: "http://localhost:3000/"+question_path(@question))
 			@category=Category.find(@question.category.id)
 			@category.update(count: @category.count+1)
 			redirect_to question_path(@question.id)

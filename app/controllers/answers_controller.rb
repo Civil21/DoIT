@@ -12,7 +12,7 @@ class AnswersController < ApplicationController
 
 			@chosens=ChosenQuestion.where(question_id: @question.id)
 			@chosens.each do |chosen|
-				@notification=Notification.create(user_id: chosen.user.id, text: "На питання '"+@question.name+"' була додана нова відповідь")
+				@notification=Notification.create(user_id: chosen.user.id, text: "На питання '"+@question.name+"' була додана нова відповідь", url: "http://localhost:3000/"+question_path(@question))
 			end
 
 			redirect_to question_path(@answer.question.id)
@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
 
 		@chosens=ChosenQuestion.where(question_id: @question.id)
 		@chosens.each do |chosen|
-			@notification=Notification.create(user_id: chosen.user.id, text: "Відповідь до питання '"+@question.name+"' була відредагована")
+			@notification=Notification.create(user_id: chosen.user.id, text: "Відповідь до питання '"+@question.name+"' була відредагована", url: "http://localhost:3000/"+question_path(@question))
 		end
 
 		redirect_to question_path(@answer.question.id)

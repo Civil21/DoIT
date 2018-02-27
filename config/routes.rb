@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   end
 
+    get "answers/:answer_id/anscomment", to: "anscomment#create", as:"answer_anscomment"
+    patch "answers/:answer_id/anscomment/:id", to: "anscomment#update"
+    delete "answers/:answer_id/anscomment/:id", to: "anscomment#destroy"
+
   	get "answers/:id/positiv_vote", to: "answers#positiv_vote", as:"positiv_vote"
   	get "answers/:id/negativ_vote", to: "answers#negativ_vote", as:"negativ_vote"
 
