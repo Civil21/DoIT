@@ -5,21 +5,26 @@
     <li class="nav-item">
       <a class="nav-link" href="/categories">Категорії</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/questions">Усі питання</a>
-    </li>
-        </ul>
+    </ul>
     </div>
 
 
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
          <%if user_signed_in?%>
-        <span class="navbar-text">
-            <%= current_user.nickname %>
-        </span>
+
+        <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        <img class="img-circle" height="28px" width="28px" src="<%=current_user.avatar.url%>">
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="#">Профіль</a>
+        <hr>
+        <%= link_to "Вихід", destroy_user_session_path,:method=>'delete', :class => 'dropdown-item'%>
+      </div>
+    </li>
         <li class="nav-item">
-             <a class="nav-link" href="/users/sign_out">Вихід</a>
+             
         </li>
     <%else%>
         <li class="nav-item">

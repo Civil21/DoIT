@@ -22,7 +22,7 @@
 <br>
 <h3><%= @question.name %></h3>
 <hr><p class="font-weight-bold badge badge-secondary"><%=link_to @question.category.name, category_path(@question.category.id) %></p>
-<p><%= @question.text %></p>
+<p><%= @question.text.html_safe %></p>
 <hr>
 <% if @question.count? %>
 <h5>Answers:</h5>
