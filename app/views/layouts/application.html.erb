@@ -8,12 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <style type="text/css">
-  .badge a{
-    color: white;
-  }
-  .navbar_text img{
-    border-radius: 100px;
-  }
+  .badge a{ color: white; }
 </style>
   </head>
   <body>
@@ -21,5 +16,6 @@
     <div class="container">
     <%= yield %>
     </div>
+        <%= render "layouts/footer"%>
   </body>
 </html>

@@ -1,4 +1,4 @@
-<!--<p>Назва: <%= @question.name %> </p>
+<% if false %><!--<p>Назва: <%= @question.name %> </p>
 <p>Зміст: <%= @question.text %></p>
 <p>Кількість відповідей: <%= @question.count %></p>
 <p>Категорія: <%= @question.category.name %></p>
@@ -19,17 +19,18 @@
 <%end%>
 </div>
 -->
+<%end%>
 <br>
 <h3><%= @question.name %></h3>
 <hr><p class="font-weight-bold badge badge-secondary"><%=link_to @question.category.name, category_path(@question.category.id) %></p>
 <p><%= @question.text.html_safe %></p>
 <hr>
-<% if @question.count? %>
-<h5>Answers:</h5>
-<% @answers.each do |answer| %>
-<%=render '/answers/elem', answer:answer%>
-<%end%>
 <%=form_for :answer, url:question_answers_path(@question.id) do |f|%>
 <%=render '/answers/form', f:f %>
+<%end%>
+<br>
+<% if @question.count? %>
+<% @answers.each do |answer| %>
+<%=render '/answers/elem', answer:answer%>
 <%end%>
 <%end%>

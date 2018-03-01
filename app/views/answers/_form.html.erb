@@ -1,4 +1,8 @@
-<p><%= f.label "Текст"%></p>
-<%= pp f.text_area :text, :class => "tinymce", :rows => 8, :cols => 100 %>
-<%= tinymce %>
-<p><%= f.submit "Відправити"%></p>
+<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Відповісти</button>
+  <div id="demo" class="collapse">
+  	<br>
+   	<%= pp f.text_area :text, :class => "tinymce", :rows => 8, :cols => 100 %>
+	<%= tinymce %>
+	<br>
+	<p><%= f.submit "Надіслати", :class=>"btn btn-primary"%></p>
+  </div>
