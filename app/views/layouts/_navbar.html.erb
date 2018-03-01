@@ -12,15 +12,18 @@
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
          <%if user_signed_in?%>
-
+    <span class="navbar-text">
+      <%= current_user.nickname %>
+    </span>
         <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         <img class="img-circle" style="margin-top: -4px; margin-bottom: -4px;" height="30px" width="30px" src="<%=current_user.avatar.url%>">
       </a>
       <div class="dropdown-menu dropdown-menu-right">
-        <a class="dropdown-item" href="#">Профіль</a>
+        <%= link_to "Профіль", edit_user_registration_path, :class => 'dropdown-item'%>
         <hr>
         <%= link_to "Вихід", destroy_user_session_path,:method=>'delete', :class => 'dropdown-item'%>
+
       </div>
     </li>
         <li class="nav-item">
