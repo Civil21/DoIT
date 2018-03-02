@@ -6,9 +6,12 @@
 -->
 
 <div>
-	<h6><span class="fa fa-user"></span> <%=answer.user.nickname%></h6>
+	<h6><span class="fa fa-user"></span> Користувач <b><%=answer.user.nickname%></b> відповів</h6>
 	<p>
 		<%=answer.text.html_safe%>
 	</p>
 	<hr>
+	<%=form_for :anscomment,  url:answer_anscomment_path(answer.id) do |f| %>
+	<%=render "anscomments/form", f:f%>
+	<%end%>
 </div>
