@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'qcomments/_elem'
   get 'anscomments/_elem'
   root to: 'questions#index'
 
@@ -20,7 +21,12 @@ Rails.application.routes.draw do
     patch "answers/:answer_id/anscomment/:id", to: "anscomment#update"
     delete "answers/:answer_id/anscomment/:id", to: "anscomment#destroy"
 
-  	get "answers/:id/positiv_vote", to: "answers#positiv_vote", as:"positiv_vote"
+    get "questions/:question_id/qcomment", to: "qcomment#create", as:"question_qcomment"
+    patch "questions/:question_id/qcomment/:id", to: "qcomment#update"
+    delete "questions/:question_id/qcomment/:id", to: "qcomment#destroy"
+
+  	
+    get "answers/:id/positiv_vote", to: "answers#positiv_vote", as:"positiv_vote"
   	get "answers/:id/negativ_vote", to: "answers#negativ_vote", as:"negativ_vote"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
