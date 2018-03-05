@@ -1,11 +1,5 @@
-  <div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h5 class="panel-title">
-        <a data-toggle="collapse" href="#collapse1">Відповісти</a>
-      </h4>
-    </div>
-    <div id="collapse1" class="panel-collapse collapse">
+<b>  <a data-toggle="collapse" href="#answerCollapse">Відповісти</a></b>
+    <div id="answerCollapse" class="collapse">
       <div class="panel">
 		<br>
 	   	<%= pp f.text_area :text, :class => "tinymce", :rows => 8, :cols => 100 %>
@@ -14,5 +8,3 @@
 		<p><%= f.submit "Надіслати", :class=>"btn btn-primary"%></p>
 	  </div>
     </div>
-  </div>
-</div>
