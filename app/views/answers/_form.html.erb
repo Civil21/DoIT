@@ -1,8 +1,10 @@
-<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Відповісти</button>
-  <div id="demo" class="collapse">
-  	<br>
-   	<%= pp f.text_area :text, :class => "tinymce", :rows => 8, :cols => 100 %>
-	<%= tinymce %>
-	<br>
-	<p><%= f.submit "Надіслати", :class=>"btn btn-primary"%></p>
-  </div>
+<b>  <a data-toggle="collapse" href="#answerCollapse">Відповісти</a></b>
+    <div id="answerCollapse" class="collapse">
+      <div class="panel">
+		<br>
+	   	<%= pp f.text_area :text, :class => "tinymce", :rows => 8, :cols => 100 %>
+		<%= tinymce %>
+		<br>
+		<p><%= f.submit "Надіслати", :class=>"btn btn-primary"%></p>
+	  </div>
+    </div>

@@ -1,10 +1,26 @@
 <br>
-<a href = "/questions/new"><button type="button" class="btn">Нове питання</button></a>
+<div class="row">
+	<div class="col">
+	<ul class="nav">
+	  <span class="navbar-text">
+	  	Усі питання
+	  </span>
+	</ul>
+	</div>
+<!--  separator  -->	
+	<div class="col">
+	<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a href = "/questions/new"><button type="button" class="btn btn-primary">Нове питання</button></a>
+  </li>
+</ul>
+
+</div>
+</div>
 <hr>
-<table>
+
 <%@questions.each do |question| %>
-<tr>
+
 <%=render 'elem', question:question%>
-</tr>
+
 <%end%>
-</table>

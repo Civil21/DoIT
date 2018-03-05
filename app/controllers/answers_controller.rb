@@ -45,7 +45,9 @@ class AnswersController < ApplicationController
 		    @vote=AnswerVote.create(user_id: current_user.id, answer_id: @answer.id, score: 1)
 	    else
 	    	if @vote.score == -1
-	    	    @vote.update(score: 1)
+	    	    @vote.update(score: 0)
+	        else
+	        	@vote.update(score: 1)
 	        end
 	    end
 	    @answer.update(scores: AnswerVote.where(answer: @answer.id).sum(:score))
@@ -58,6 +60,8 @@ class AnswersController < ApplicationController
 		    @vote=AnswerVote.create(user_id: current_user.id, answer_id: @answer.id, score: -1)
 	    else
 	    	if @vote.score == 1
+	    	    @vote.update(score: 0)
+	    	else
 	    	    @vote.update(score:-1)
 	        end
 	    end

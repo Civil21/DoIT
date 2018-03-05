@@ -1,45 +1,23 @@
-<% if false %><!--<p>Назва: <%= @question.name %> </p>
-<p>Зміст: <%= @question.text %></p>
-<p>Кількість відповідей: <%= @question.count %></p>
-<p>Категорія: <%= @question.category.name %></p>
-<hr>
-<table>
-<tr>
-<td>Відповідь</td><td>Хто</td><td>Оцінка</td><td>Дії</td>
-</tr>
-<% @answers.each do |answer| %>
-<tr>
-<%=render '/answers/elem', answer:answer%>
-</tr>
-<%end%>
-</table>
-<div align="center">
-<%=form_for :answer, url:question_answers_path(@question.id) do |f|%>
-<%=render '/answers/form', f:f %>
-<%end%>
-</div>
--->
-<%end%>
 <br>
 <h3><%= @question.name %></h3>
 <hr><p class="font-weight-bold badge badge-secondary"><%=link_to @question.category.name, category_path(@question.category.id) %></p>
 <p><%= @question.text.html_safe %></p>
 
 <%=form_for :answer, url:question_answers_path(@question.id) do |f|%>
-<%=render '/answers/form', f:f %>
+<%=render '/answers/form', f:f %>&emsp;
 <%end%>
-<br>
-<%=form_for :qcomment,  url:question_qcomment_path(@question.id) do |f| %>
-<%=render "/qcomments/form", f:f%>
+
+
+<%=form_for :qcomment,  url:question_qcomment_path(@question.id) do |g| %>
+<%=render "/qcomments/form", g:g %>
 <%end%>
-<hr>
-<br>
-<% if @question.count? %>
-<% @answers.each do |answer| %>
-<%=render '/answers/elem', answer:answer%>
-<%end%>
-<%end%>
-<h6>Кoментарі: </h6>
+
 <% @qcomments.each do |qcomment| %>
 <%=render '/qcomments/elem', qcomment:qcomment%>
 <%end%>
+<br>
+
+<% @answers.each do |answer| %>
+<%=render '/answers/elem', answer:answer%>
+<%end%>
+
