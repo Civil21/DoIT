@@ -4,6 +4,7 @@
 	}
 }
 </style>
+<tr>
 <div>
 	<h5>
 		<%=link_to question.name, question_path(question.id) %>
@@ -16,7 +17,8 @@
 	<p>
 		<%=strip_tags(question.text)[0..255]%>...
 		<br>
-		<p class="font-weight-bold badge badge-secondary"><%=link_to question.category.name, category_path(question.category.id) %></p>
+		<p class="font-weight-bold badge badge-secondary"><%= raw question.categories.map(&:name).map{ |t| link_to t, category_path(t), class: 'badge badge-primary' }.join(' ') %></p>
 	</p>
 	<hr>
 </div>
+</tr>
