@@ -15,7 +15,6 @@ class QuestionsController < ApplicationController
 	end
 
 	def new
-		@question= Question.new
 	end
 
 	def create
@@ -24,8 +23,6 @@ class QuestionsController < ApplicationController
 		if @question.save
 			chosen
 			@notification=Notification.create(user_id: current_user.id, text: "Ваше питання успішно додано", url: "http://localhost:3000/"+question_path(@question))
-			@category=Category.find(@question.category.id)
-			@category.update(count: @category.count+1)
 			redirect_to question_path(@question.id)
 		else
 
@@ -42,8 +39,6 @@ class QuestionsController < ApplicationController
 	end
 
 	def destroy
-		@category=Category.find(@question.category.id)
-		@category.update(count: @category.count-1)
 		@question.destroy
 		redirect_to root_path
 	end
@@ -61,7 +56,7 @@ class QuestionsController < ApplicationController
 	private
 
 	def question_params
-		params.require(:question).permit(:user_id,:category_id,:name,:text,:answers)
+		params.require(:question).permit(:user_id,:all_categories,:name,:text,:answers)
 	end
 
 	def set_question

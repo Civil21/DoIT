@@ -5,8 +5,8 @@ class CategoriesController < ApplicationController
 	end
 
 	def show
-		@category=Category.find(params[:id])
-		@questions=Question.where(category_id: @category.id)
+		@category=Category.find_by(name: params[:id])
+		@questions=@category.questions
 	end
 
 end

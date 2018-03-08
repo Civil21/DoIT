@@ -1,11 +1,20 @@
-<br />
-Категорія:
-<%= f.select 'category_id', options_from_collection_for_select(Category.all, 'id', 'name'),{}, :class=>"form-control" %><br />
-Заголовок:
-<%= f.text_field :name,  :class=>"form-control" %><br />
-Текст:
+<div>
+<br/>
+<div class="form-group">
+<%= f.label :all_categories%>
+<%= f.text_field :all_categories, class: "form-control" %>
+</div>
+
+<div class="form-group">
+<%= f.label :name%>
+<%= f.text_field :name,  class: "form-control" %>
+</div>
+
+<div class="form-group">
+<%= f.label :text%>
 <%= f.text_area :text, :class => "tinymce", :rows => 8, :cols => 100 %>
 <%= tinymce %>
-<br />
-<p><%= f.submit "Зберегти", :class=>"btn btn-primary"%></p>
+</div>
+
+<%= f.submit :commit , class:"btn btn-primary"%>
 </div>

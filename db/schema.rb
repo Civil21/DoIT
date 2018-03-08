@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302201547) do
+ActiveRecord::Schema.define(version: 20180308002527) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -70,9 +70,17 @@ ActiveRecord::Schema.define(version: 20180302201547) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categorings", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_categorings_on_category_id"
+    t.index ["question_id"], name: "index_categorings_on_question_id"
   end
 
   create_table "chosen_questions", force: :cascade do |t|
@@ -85,9 +93,9 @@ ActiveRecord::Schema.define(version: 20180302201547) do
   create_table "notifications", force: :cascade do |t|
     t.integer "user_id"
     t.string "text"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "url"
   end
 
   create_table "qcomments", force: :cascade do |t|

@@ -1,6 +1,9 @@
 <br>
 <h3><%= @question.name %></h3>
-<hr><p class="font-weight-bold badge badge-secondary"><%=link_to @question.category.name, category_path(@question.category.id) %></p>
+<hr>
+<p class="font-weight-bold badge badge-secondary"> 
+<%= raw @question.categories.map(&:name).map{ |t| link_to t, category_path(t), class: 'badge badge-primary' }.join(' ') %>
+</p>
 <p><%= @question.text.html_safe %></p>
 
 <%=form_for :answer, url:question_answers_path(@question.id) do |f|%>
@@ -8,16 +11,12 @@
 <%end%>
 
 
-<%=form_for :qcomment,  url:question_qcomment_path(@question.id) do |g| %>
+<%=form_for :qcomment,  url:question_qcomments_path(@question.id) do |g| %>
 <%=render "/qcomments/form", g:g %>
 <%end%>
 
-<% @qcomments.each do |qcomment| %>
-<%=render '/qcomments/elem', qcomment:qcomment%>
-<%end%>
+<%=render @qcomments%>
 <br>
 
-<% @answers.each do |answer| %>
-<%=render '/answers/elem', answer:answer%>
-<%end%>
+<%=render @answers%>
 
