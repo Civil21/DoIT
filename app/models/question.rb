@@ -4,4 +4,6 @@ class Question < ApplicationRecord
 	has_many :answers, dependent: :destroy
 	has_many :chosen_questions, dependent: :destroy
 	has_many :qcomments, dependent: :destroy
+
+	
 end

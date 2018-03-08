@@ -9,7 +9,7 @@ class QcommentsController < ApplicationController
 		if @qcomment.save
 			redirect_to question_path(@qcomment.question.id)
 		else
-
+			render 'new'
 		end
 	end
 

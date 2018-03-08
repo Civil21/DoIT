@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'qcomments/_elem'
-  get 'anscomments/_elem'
+  
   root to: 'questions#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -14,16 +13,13 @@ Rails.application.routes.draw do
   		get :chosen
   	end
   	resources :answers, only:[:create,:update,:destroy] 
+    resources :qcomments, only:[:create,:update,:destroy]
 
   end
 
-    get "answers/:answer_id/anscomment", to: "anscomment#create", as:"answer_anscomment"
-    patch "answers/:answer_id/anscomment/:id", to: "anscomment#update"
-    delete "answers/:answer_id/anscomment/:id", to: "anscomment#destroy"
-
-    get "questions/:question_id/qcomment", to: "qcomment#create", as:"question_qcomment"
-    patch "questions/:question_id/qcomment/:id", to: "qcomment#update"
-    delete "questions/:question_id/qcomment/:id", to: "qcomment#destroy"
+  resources :answers, only:[] do
+    resources :anscomments, only:[:create,:update,:destroy]
+  end
 
   	
     get "answers/:id/positiv_vote", to: "answers#positiv_vote", as:"positiv_vote"

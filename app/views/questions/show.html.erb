@@ -8,7 +8,7 @@
 <%end%>
 
 
-<%=form_for :qcomment,  url:question_qcomment_path(@question.id) do |g| %>
+<%=form_for :qcomment,  url:question_qcomments_path(@question.id) do |g| %>
 <%=render "/qcomments/form", g:g %>
 <%end%>
 
