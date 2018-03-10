@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand navbar-dark bg-dark">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
       <%=link_to "DoIT", root_path, :class=>"navbar-brand"%>
     <li class="nav-item">
-      <a class="nav-link" href="/categories"><%= t('tags') %></a>
+      <%= link_to t('tags'), categories_path, :class => 'nav-link'%>
     </li>
 
     </ul>
@@ -32,7 +32,7 @@
         </li>
     <%else%>
         <li class="nav-item">
-             <a class="nav-link" href="/users/sign_in"><%= t('sign_in') %></a>
+             <%= link_to t('sign_in'), new_user_session_path, :class => 'nav-link'%>
         </li>   
     <%end%>   
         </ul>
