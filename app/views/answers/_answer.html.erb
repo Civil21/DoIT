@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row clearfix">
 	<div class="col-1">
 		<%=link_to positiv_vote_path(answer.id) do%>
 		<%= image_tag "up-arrow.svg", :heigth=>"18", :width=>"18", :class=>"mx-auto d-block" %>
@@ -11,13 +11,13 @@
 	<div class="col">
 	<%=answer.text.html_safe%>
 		<%=form_for :anscomment,  url:answer_anscomment_path(answer.id) do |f| %>
-		<small><b>
-			<%=link_to "Видалити", question_answer_path(answer.question.id,answer.id), method: :delete, :class=>"text-secondary"%>
+		<small class="float-left"><b>
+			<%=link_to t('delete'), question_answer_path(answer.question.id,answer.id), method: :delete, :class=>"text-secondary"%>
 			&emsp;
 			<%=render "anscomments/form", f:f%>
 		</b></small>
 		<%end%>
-	<h6 class="text-right text-dark"><%=image_tag answer.user.avatar.url, width:20,height:20%> <b><%=answer.user.nickname%></b></h6>
+	<small class="text-right text-dark float-right"><%=image_tag answer.user.avatar.url, width:20,height:20%> <b class="align-bottom"><%=answer.user.nickname%></b></small>
 </div>
 </div>
 <hr>

@@ -1,11 +1,15 @@
-<br>
+
+<div class="row">
+<div class="col">
 <h3><%= @question.name %></h3>
 <hr>
-<p class="font-weight-bold badge badge-secondary"> 
-<%= raw @question.categories.map(&:name).map{ |t| link_to t, category_path(t), class: 'badge badge-primary' }.join(' ') %>
+<p> 
+<%= raw @question.categories.map(&:name).map{ |t| link_to t, category_path(t), class: 'font-weight-bold badge badge-secondary' }.join(' ') %>
 </p>
 <p><%= @question.text.html_safe %></p>
-
+<%=render @qcomments%>
+<br>
+<div class="forms-b">
 <%=form_for :answer, url:question_answers_path(@question.id) do |f|%>
 <%=render '/answers/form', f:f %>&emsp;
 <%end%>
@@ -15,8 +19,13 @@
 <%=render "/qcomments/form", g:g %>
 <%end%>
 
-<%=render @qcomments%>
-<br>
+</div>
+<hr>
 
 <%=render @answers%>
 
+</div>
+<div class="col-3">
+	 <%= render "layouts/sidebar"%>
+</div>
+</div>
