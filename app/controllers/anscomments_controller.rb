@@ -9,7 +9,7 @@ class AnscommentsController < ApplicationController
 		if @anscomment.save
 			redirect_to question_path(@anscomment.answer.question.id)
 		else
-
+			render 'new'
 		end
 	end
 

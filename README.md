@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Q&A Web App
 
-Things you may want to cover:
+# License
 
-* Ruby version
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+                    Version 2, December 2004
 
-* System dependencies
+ Everyone is permitted to copy and distribute verbatim or modified
+ copies of this project, and changing it is allowed as long
+ as the name is changed.
 
-* Configuration
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  0. You just DO WHAT THE FUCK YOU WANT TO.

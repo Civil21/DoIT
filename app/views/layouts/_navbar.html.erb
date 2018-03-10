@@ -1,14 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
-      <a class="navbar-brand" href="/">DoIT</a>
+      <%=link_to "DoIT", root_path, :class=>"navbar-brand"%>
     <li class="nav-item">
-      <a class="nav-link" href="/categories">Категорії</a>
+      <a class="nav-link" href="/categories"><%= t('tags') %></a>
     </li>
 
-    
-
-    
     </ul>
     </div>
 
@@ -24,9 +21,9 @@
         <img class="img-circle" style="margin-top: -4px; margin-bottom: -4px;" height="30px" width="30px" src="<%=current_user.avatar.url%>">
       </a>
       <div class="dropdown-menu dropdown-menu-right">
-        <%= link_to "Профіль", edit_user_registration_path, :class => 'dropdown-item'%>
+        <%= link_to t('profile'), edit_user_registration_path, :class => 'dropdown-item'%>
         <hr>
-        <%= link_to "Вихід", destroy_user_session_path,:method=>'delete', :class => 'dropdown-item'%>
+        <%= link_to t('sign_out'), destroy_user_session_path,:method=>'delete', :class => 'dropdown-item'%>
 
       </div>
     </li>
@@ -35,7 +32,7 @@
         </li>
     <%else%>
         <li class="nav-item">
-             <a class="nav-link" href="/users/sign_in">Вхід</a>
+             <a class="nav-link" href="/users/sign_in"><%= t('sign_in') %></a>
         </li>   
     <%end%>   
         </ul>

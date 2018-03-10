@@ -1,11 +1,11 @@
 <!-- Button trigger modal -->
-<a href="#" data-toggle="modal" data-target="#newCommentModal" class="text-secondary">Коментувати</a>
+<a href="#" data-toggle="modal" data-target="#newCommentModal" class="text-secondary"><%=t('comment')%></a>
 <!-- Modal -->
 <div class="modal fade" id="newCommentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Новий комент</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle"><%=t('new_comment')%></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -15,8 +15,8 @@
 		<%= tinymce %>
 	  </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Скасувати</button>
-        <%= f.submit "Зберегти", :class=>"btn btn-sm btn-primary"%>
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><%=t('cancel')%></button>
+        <%= f.submit t('submit'), :class=>"btn btn-sm btn-primary"%>
       </div>
     </div>
   </div>
